@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">PlantsApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">خوش آمدید !</string>
+    <string name="text_for_last_intro_button">بزن بریم! </string>
+    <string name="text_for_last_intro_title">از زندگی کردن با <b>گیاهان</b>لذت ببرید !</string>
+    <string name="bottom_nav_home">خانه</string>
+    <string name="bottom_nav_cart">سبد خرید</string>
+    <string name="bottom_nav_garden">باغچه</string>
+    <string name="bottom_nav_profile">پروفایل</string>
+    <string name="text_temp">دما</string>
+    <string name="text_height">ارتفاع</string>
+    <string name="text_pot">گلدون</string>
+    <string name="text_price">قیمت کل</string>
+    <string name="new_garden">باغچه جدید</string>
+</resources>
