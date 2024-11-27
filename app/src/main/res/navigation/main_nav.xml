@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.plantsapp.Views.Home.HomeFragment"
+        android:name="com.example.plantsapp.views.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/gardenFragment"
-        android:name="com.example.plantsapp.Views.Garden.GardenListFragment"
+        android:name="com.example.plantsapp.views.garden.GardenListFragment"
         android:label="fragment_garden"
         tools:layout="@layout/fragment_garden" >
         <action
@@ -40,7 +40,7 @@
     </fragment>
     <fragment
         android:id="@+id/shopFragment"
-        android:name="com.example.plantsapp.Views.Shop.ShopFragment"
+        android:name="com.example.plantsapp.views.shop.ShopFragment"
         android:label="fragment_shop"
         tools:layout="@layout/fragment_shop" >
         <action
@@ -49,7 +49,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.plantsapp.Views.Profile.ProfileFragment"
+        android:name="com.example.plantsapp.views.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
@@ -58,11 +58,11 @@
     </fragment>
     <fragment
         android:id="@+id/plantFragment"
-        android:name="com.example.plantsapp.Views.Plant.HomePlantFragment"
+        android:name="com.example.plantsapp.views.plant.HomePlantFragment"
         android:label="fragment_plant"
         tools:layout="@layout/fragment_plant">
         <argument
-            app:argType="com.example.plantsapp.Data.Plant"
+            app:argType="com.example.plantsapp.data.Plant"
             android:name="plant" />
         <action
             android:id="@+id/action_plantFragment_to_homeFragment"
@@ -71,7 +71,7 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.plantsapp.Views.Main.MainFragment"
+        android:name="com.example.plantsapp.views.main.MainFragment"
         android:label="main_fragment"
         tools:layout="@layout/fragment_main">
         <action
@@ -80,7 +80,7 @@
     </fragment>
     <fragment
         android:id="@+id/gardenItemFragment"
-        android:name="com.example.plantsapp.Views.Garden.gardenItem.GardenItemFragment"
+        android:name="com.example.plantsapp.views.garden.gardenItem.GardenItemFragment"
         android:label="fragment_garden_item"
         tools:layout="@layout/fragment_garden_item" >
         <argument

@@ -6,7 +6,7 @@
     android:background="@color/dark_white"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Views.Main.MainFragment">
+    tools:context=".views.main.MainFragment">
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/nav_host_bottom_nav"

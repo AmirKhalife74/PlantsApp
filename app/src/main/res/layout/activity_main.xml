@@ -8,7 +8,7 @@
     android:layout_width="match_parent"
     android:fitsSystemWindows="true"
     android:layout_height="match_parent"
-    tools:context=".Views.Main.MainActivity">
+    tools:context=".views.main.MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/my_nav_host_fragment"
