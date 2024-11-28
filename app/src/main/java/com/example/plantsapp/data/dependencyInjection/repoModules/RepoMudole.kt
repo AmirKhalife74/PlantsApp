@@ -4,6 +4,7 @@ import android.content.Context
 import com.example.plantsapp.data.roomDb.DAO
 import com.example.plantsapp.data.remote.Api
 import com.example.plantsapp.data.repositories.PlantsRepository
+import com.example.plantsapp.data.repositories.UserRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,5 +20,11 @@ object RepoMudole {
     @Singleton
     fun providePlantsRepository(db: DAO, @ApplicationContext context: Context, api:Api): PlantsRepository {
         return PlantsRepository(db,context,api)
+    }
+
+    @Provides
+    @Singleton
+    fun provideUserRepository(db:DAO,@ApplicationContext context: Context,api:Api):UserRepository{
+        return UserRepository(db,context,api)
     }
 }

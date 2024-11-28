@@ -1,7 +1,9 @@
 package com.example.plantsapp.data.dependencyInjection.viewModels
 
 import com.example.plantsapp.data.repositories.PlantsRepository
+import com.example.plantsapp.data.repositories.UserRepository
 import com.example.plantsapp.viewModels.MainViewModel
+import com.example.plantsapp.viewModels.UserViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,5 +21,12 @@ object ViewModelsModule {
     ):MainViewModel
     {
         return MainViewModel(plantsRepository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideUserViewModel(userRepository: UserRepository): UserViewModel
+    {
+        return UserViewModel(userRepository)
     }
 }

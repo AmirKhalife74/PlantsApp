@@ -1,11 +1,12 @@
 package com.example.plantsapp.data.remote
 
-import androidx.lifecycle.LiveData
+
 import com.example.data.model.User
 import com.example.data.model.auth.LoginRequest
 import com.example.data.model.auth.RegisterRequest
 import com.example.plantsapp.data.Plant
 import com.example.plantsapp.data.model.ResponseModel
+import com.example.plantsapp.data.model.auth.LoginResponse
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -16,7 +17,7 @@ interface Api {
 
     //Auth
     @POST("/login")
-    suspend fun login(@Body loginRequest: LoginRequest):Response<String>
+    suspend fun login(@Body loginRequest: LoginRequest):Response<ResponseModel<LoginResponse>>
 
     @POST("/register")
     suspend fun register(@Body registerRequest: RegisterRequest):Response<ResponseModel<User>>

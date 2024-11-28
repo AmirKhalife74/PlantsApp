@@ -69,7 +69,7 @@ class IntroFragment : Fragment() {
                         val handler = Handler(Looper.getMainLooper())
                         handler.postDelayed({
                             // Your code to execute after the duration
-                            findNavController().navigate(R.id.action_introFragment_to_mainFragment2)
+                            findNavController().navigate(R.id.action_introFragment_to_loginFragment)
                         }, 300)
 
                     }

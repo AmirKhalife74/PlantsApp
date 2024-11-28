@@ -1,4 +1,4 @@
-package com.example.plantsapp.data.roomDb.auth
+package com.example.plantsapp.data.model.auth
 
 import java.io.Serializable
 

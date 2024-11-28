@@ -1,6 +1,7 @@
 package com.example.plantsapp.data.dependencyInjection
 
 import com.example.plantsapp.data.remote.Api
+import com.example.plantsapp.data.remote.HttpInterceptor
 import com.example.plantsapp.utils.Env
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -50,6 +51,7 @@ object NetworkModule {
             .connectTimeout(30, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)
             .writeTimeout(420, TimeUnit.SECONDS)
+            .addInterceptor(HttpInterceptor())
             .sslSocketFactory(sslContext.socketFactory, trustAllCerts[0] as X509TrustManager)
             .hostnameVerifier { _, _ -> true }
             .build()
