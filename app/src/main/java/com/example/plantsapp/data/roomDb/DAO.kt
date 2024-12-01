@@ -14,6 +14,8 @@ interface DAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(plant: Plant)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAll(plants:List<Plant>)
     @Delete
     fun delete(plant: Plant)
 

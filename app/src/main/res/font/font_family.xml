@@ -4,10 +4,6 @@
         <font
             app:fontStyle="normal"
             app:fontWeight="400"
-            app:font="@font/custom_font" />
-        <font
-            app:fontStyle="italic"
-            app:fontWeight="400"
-            app:font="@font/custom_font_italic" />
+            app:font="@font/iransans_x_light" />
     </font-family>
 </font-family>

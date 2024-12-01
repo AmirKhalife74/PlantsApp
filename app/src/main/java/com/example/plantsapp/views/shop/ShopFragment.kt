@@ -55,8 +55,8 @@ class ShopFragment : Fragment() {
     private fun observe() {
         viewModel.plantList.observe(viewLifecycleOwner) {
             viewModel.plantList.observe(viewLifecycleOwner) {
-                it?.data.let {
-                    it?.let {
+                it?.let {
+                    {
                         plants = it.toMutableList()
                     }
                 }

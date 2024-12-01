@@ -21,7 +21,7 @@ class HttpInterceptor() : Interceptor {
             modifiedRequest.header("Accept", "application/json")
             if (Env.store.getBoolean("isLogin")) {
                 modifiedRequest.header(
-                    "Authorization", String.format("Bearer %s", Env.store.getString("token"))
+                    "Authorization", String.format("Bearer %s", Env.store.getString("access_token"))
                 )
                 Log.d("TOKEN_INFO", Env.store.getString("token"))
             }

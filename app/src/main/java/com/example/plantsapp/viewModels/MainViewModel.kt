@@ -13,8 +13,8 @@ class MainViewModel @Inject constructor(private val plantsRepository: PlantsRepo
 
 
 
-    private var _plantList = MutableLiveData<ResponseModel<List<Plant>>?>(null)
-    val plantList : MutableLiveData<ResponseModel<List<Plant>>?> get() = _plantList
+    private var _plantList = MutableLiveData<List<Plant>?>(null)
+    val plantList : MutableLiveData<List<Plant>?> get() = _plantList
     fun clearPlantsList() = _plantList.postValue(null)
 
     private var _cart = MutableLiveData<Cart?>(null)
@@ -22,7 +22,15 @@ class MainViewModel @Inject constructor(private val plantsRepository: PlantsRepo
     fun clearCart() = _cart.postValue(null)
 
     suspend fun getPlants(){
-        plantList.postValue(plantsRepository.getAllPlants())
+        plantsRepository.getAllPlants()?.let {
+            if (it.status == 200)
+            {
+                if (it.data?.isEmpty() != true){
+                    plantList.postValue(it.data)
+                }
+            }
+        }
+
     }
 
     suspend fun getPlantById(name: String){

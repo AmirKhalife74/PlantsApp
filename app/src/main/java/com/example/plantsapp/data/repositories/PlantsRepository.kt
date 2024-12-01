@@ -7,6 +7,8 @@ import com.example.plantsapp.data.Plant
 import com.example.plantsapp.data.model.ResponseModel
 import com.example.plantsapp.data.remote.Api
 import com.example.plantsapp.utils.internetCheck
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import retrofit2.Response
 
 class PlantsRepository(private val dao: DAO, private val context: Context, private val api: Api) {
@@ -19,40 +21,37 @@ class PlantsRepository(private val dao: DAO, private val context: Context, priva
     }
 
     suspend fun getAllPlants(): ResponseModel<List<Plant>>? {
-        var plantList: ResponseModel<List<Plant>>? = null
-        if (internetCheck(context) {
-                Toast.makeText(context, "No Internet Connection", Toast.LENGTH_SHORT).show()
-            }) {
-            plantList = api.getAllPlants().body()
-            plantList?.data.let {
-                it?.forEach {
-                    dao.insert(it)
+        return withContext(Dispatchers.IO) {
+            if (internetCheck(context)) {
+                // Fetch from API when the internet is available
+                val apiResponse = api.getAllPlants().body()
+                apiResponse?.data?.let { plants ->
+                    // Insert fetched plants into the local database
+                    dao.insertAll(plants)
+                }
+                apiResponse
+            } else {
+                // Fetch from the local database when the internet is not available
+                val localPlants = dao.getAllPlants()
+                if (localPlants.isNotEmpty()) {
+                    ResponseModel(
+                        status = 200,
+                        isSuccessful = false,
+                        message = "دیتا به صورت محلی بارگذاری شد",
+                        data = localPlants
+                    )
+                } else {
+                    ResponseModel(
+                        status = 500,
+                        isSuccessful = false,
+                        message = "دیتایی یافت نشد !",
+                        data = null
+                    )
                 }
             }
-
-            return plantList
-        } else {
-            if (dao.getAllPlants().isNotEmpty())
-            {
-                plantList = ResponseModel(
-                    status = 200,
-                    isSuccessful = false,
-                    "دیتا به صورت محلی بارگذاری شد",
-                    data = dao.getAllPlants()
-                )
-            }else
-            {
-                plantList = ResponseModel(
-                    status = 500,
-                    isSuccessful = false,
-                    "دیتایی یافت نشد !",
-                    data =null
-                )
-            }
-
-            return plantList
         }
     }
+
 
     suspend fun getPlantsByName(plantName: String): Plant? {
         return dao.getPlantByName(plantName)

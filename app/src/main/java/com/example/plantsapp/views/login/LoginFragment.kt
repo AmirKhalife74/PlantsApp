@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.data.model.auth.LoginRequest
 import com.example.plantsapp.R
 import com.example.plantsapp.databinding.FragmentLoginBinding
+import com.example.plantsapp.utils.Env
 import com.example.plantsapp.viewModels.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -63,6 +64,9 @@ class LoginFragment : Fragment() {
                 value?.let {
                     if (value.accessToken.isNotEmpty() && value.refreshToken.isNotEmpty())
                     {
+                        Env.store.setString("access_token",value.accessToken)
+                        Env.store.setString("refresh_token",value.refreshToken)
+                        Env.store.setBoolean("isLogin",true)
                         findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
                     }
                 }

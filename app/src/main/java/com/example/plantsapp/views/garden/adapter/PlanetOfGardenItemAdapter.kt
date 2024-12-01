@@ -23,7 +23,7 @@ class PlanetOfGardenItemAdapter(
             binding.apply {
                 imgGardenBackground.setImageResource(R.drawable.alovera)
                 tvGardenName.text = plant.name
-                tvCountOfGardenPlants.text = plant.pot
+                tvCountOfGardenPlants.text = plant.name
             }
         }
 

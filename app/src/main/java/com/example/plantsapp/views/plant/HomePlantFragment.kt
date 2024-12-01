@@ -87,17 +87,25 @@ class HomePlantFragment : Fragment() {
 
     private fun getGardenListObserve() {
         gardenViewModel.getAllGardensResponse.observe(viewLifecycleOwner) { data ->
-            data?.let {
-                val addNewGardenItem = Garden(id = 0,"addNewItem", mutableListOf())
-                it.add(0,addNewGardenItem)
-                addToGarden(it,plant){ type,garden,gardenName ->
+            var gardens = data
+            val addNewGardenItem = Garden(id = 0, "addNewItem", mutableListOf())
+            if (gardens == null)
+            {
+                gardens = mutableListOf()
+            }
+            if (data?.contains(addNewGardenItem) == false)
+            {
+                gardens.add(0, addNewGardenItem)
+            }
+            gardens?.let {
+                addToGarden(gardens, plant) { type, garden, gardenName ->
                     gardenViewModel.viewModelScope.launch {
-                        when(type)
-                        {
-                            0->{
+                        when (type) {
+                            0 -> {
                                 gardenViewModel.createGarden(gardenName)
                             }
-                            1->{
+
+                            1 -> {
                                 gardenViewModel.addPlantToGarden(garden)
                             }
 
@@ -107,15 +115,16 @@ class HomePlantFragment : Fragment() {
 
                 }
             }
+
         }
     }
 
     private fun setPlant() {
         binding.apply {
             tvPlantName.text = plant.name
-            tvPlantDesc.text = plant.desc.toString()
-            tvPlantPot.text = plant.pot.toString()
-            tvPlantHieght.text = plant.height.toString()
+            tvPlantDesc.text = plant.description.toString()
+            tvPlantPot.text = plant.name.toString()
+            tvPlantHieght.text = plant.description
         }
 
     }

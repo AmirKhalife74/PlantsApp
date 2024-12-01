@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -13,17 +14,17 @@ import com.example.plantsapp.viewModels.MainViewModel
 import com.example.plantsapp.views.home.Adapter.HomePlantsAdapter
 import com.example.plantsapp.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import javax.inject.Inject
-
 
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     @Inject
-    lateinit var viewModel:MainViewModel
+    lateinit var viewModel: MainViewModel
 
-    lateinit var plants:MutableList<Plant?>
+    lateinit var plants: MutableList<Plant?>
     private lateinit var binding: FragmentHomeBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +34,7 @@ class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View{
+    ): View {
         binding = FragmentHomeBinding.inflate(inflater)
         return binding.root
     }
@@ -45,31 +46,31 @@ class HomeFragment : Fragment() {
         observe()
     }
 
-    private fun init()
-    {
-        plants = mutableListOf()
-    }
-    private fun listen()
-    {
+    private fun init() {
+        viewModel.viewModelScope.launch {
+            viewModel.getPlants()
+        }
 
     }
-    private fun observe()
-    {
-        viewModel.plantList.observe(viewLifecycleOwner){
-            it?.data.let {
-                it?.let {
-                    plants = it.toMutableList()
-                }
+
+    private fun listen() {
+
+    }
+
+    private fun observe() {
+        viewModel.plantList.observe(viewLifecycleOwner) {
+            it?.let {
+                plants = it.toMutableList()
+                setRc()
             }
-            setRc()
+
         }
     }
 
-    private fun setRc()
-    {
+    private fun setRc() {
         binding.apply {
-            rcPlantsHome.layoutManager = StaggeredGridLayoutManager(2,RecyclerView.VERTICAL)
-            val adapter = HomePlantsAdapter(plants,findNavController(),requireContext())
+            rcPlantsHome.layoutManager = StaggeredGridLayoutManager(2, RecyclerView.VERTICAL)
+            val adapter = HomePlantsAdapter(plants, findNavController(), requireContext())
             rcPlantsHome.adapter = adapter
         }
     }
