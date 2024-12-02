@@ -71,6 +71,9 @@ dependencies {
     //Ok Http
     implementation (libs.okhttp)
 
+    //Lottie
+    implementation(libs.lottie)
+
     implementation (libs.gson)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.fragment.ktx)
