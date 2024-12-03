@@ -1,5 +1,7 @@
 package com.example.plantsapp.views.garden
 
+import CalendarDayAdapter
+import JalaliDate
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,12 +9,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.plantsapp.data.Garden
+import com.example.plantsapp.databinding.FragmentCalendarBinding
 import com.example.plantsapp.utils.RecyclerTouchListener
 import com.example.plantsapp.viewModels.GardenViewModel
 import com.example.plantsapp.views.plant.adapter.GardenItemsMainAdapter
 import com.example.plantsapp.views.plant.adapter.PlanetOfGardenItemAdapter
 import com.example.plantsapp.databinding.FragmentGardenBinding
+import com.example.plantsapp.viewModels.ReminderViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -24,6 +29,13 @@ class GardenListFragment : Fragment() {
 
     @Inject
     lateinit var gardenViewModel: GardenViewModel
+
+    @Inject
+    lateinit var reminderViewModel: ReminderViewModel
+
+    private val jalaliDate = JalaliDate()
+    private var currentYear = 1403
+    private var currentMonth = 9
 
     lateinit var gardenList: List<Garden>
 
@@ -82,7 +94,6 @@ class GardenListFragment : Fragment() {
                                             gardenViewModel.viewModelScope.launch {
                                                 gardenViewModel.getGardenById(gardenList[position].id)
                                             }
-                                            prgrsGardenPlants.visibility = View.VISIBLE
 
                                         }
 
@@ -99,15 +110,11 @@ class GardenListFragment : Fragment() {
                 gardenViewModel.getGardenResponse.observe(viewLifecycleOwner)
                 {
                     it?.let {
-                        prgrsGardenPlants.visibility = View.GONE
                         val adapter = PlanetOfGardenItemAdapter(
                             context = requireContext(),
                             garden = it,
-                            navController = findNavController())
-                        rcGardenPlants.adapter = adapter
-                        rcGardenPlants.setHasFixedSize(true)
-
-
+                            navController = findNavController()
+                        )
                     }
                 }
             }
@@ -115,20 +122,69 @@ class GardenListFragment : Fragment() {
 
     }
 
-//    private fun setCalendar() {
-//        binding.apply {
-//            val currentYear = 1402 // Example Persian year
-//            val currentMonth = 6   // Example Persian month (Aban)
-//
-//            // Get days for the current month
-//            val daysInMonth = DateUtil.getDaysInMonth(currentYear, currentMonth)
-//            val daysList = (1..daysInMonth).map { it.toString() }
-//
-//            rcCalendar.layoutManager =
-//                GridLayoutManager(requireContext(), 7) // 7 columns for days of the week
-//            rcCalendar.adapter = PersianCalendarAdapter(daysList)
-//        }
-//
-//    }
+    private fun setCalendar()
+    {
+        binding.apply {
+            updateCalendar()
+            // Previous/Next month navigation
+            btnPrevious.setOnClickListener {
+                currentMonth--
+                if (currentMonth < 1) {
+                    currentMonth = 12
+                    currentYear--
+                }
+                updateCalendar()
+            }
+
+            btnNext.setOnClickListener {
+                currentMonth++
+                if (currentMonth > 12) {
+                    currentMonth = 1
+                    currentYear++
+                }
+                updateCalendar()
+            }
+        }
+    }
+
+    private fun updateCalendar() {
+        binding.apply {
+
+
+            val daysInMonth = jalaliDate.getDaysInJalaliMonth(currentYear, currentMonth)
+            val startDayOfWeek = jalaliDate.getStartDayOfMonth(currentYear, currentMonth)
+
+            val days = mutableListOf<String>()
+            val wateringReminders = mutableListOf<String>() // Store reminder dates
+
+            for (i in 1 until startDayOfWeek) days.add("") // Empty spaces
+            for (day in 1..daysInMonth) {
+                val date = "$currentYear-${String.format("%02d", currentMonth)}-${
+                    String.format(
+                        "%02d",
+                        day
+                    )
+                }"
+                days.add(date)
+
+                // Fetch watering reminders for this date
+                reminderViewModel.viewModelScope.launch {
+                    val reminders = reminderViewModel.getWateringReminders(date)
+                    if (reminders.isNotEmpty()) {
+                        wateringReminders.add(date)
+                    }
+                }
+
+            }
+
+            calendarGrid.layoutManager = GridLayoutManager(requireContext(), 7)
+            calendarGrid.adapter = CalendarDayAdapter(requireContext(), days, wateringReminders)
+
+            tvMonthYear.text = "${jalaliDate.getMonthName(currentMonth)} $currentYear"
+        }
+
+        // Fetch watering reminders for the given date
+
+    }
 
 }

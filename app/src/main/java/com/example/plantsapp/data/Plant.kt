@@ -6,7 +6,8 @@ import java.io.Serializable
 
 data class CareInstructions(
     val watering: String,
-    val sunlight: String
+    val sunlight: String,
+    val wateringInterval: Int
 )
 @Entity(tableName = "tbl_plants")
 data class Plant(
@@ -17,5 +18,7 @@ data class Plant(
     val categories: List<String>,
     val price: Double,
     val stock: Int,
-    val images: List<String>
+    val images: List<String>,
+    val lastWateredDate: String?, // ISO format date (e.g., "2024-12-01")
+    val nextWateringDate: String? // Calculated based on `lastWateredDate` and `wateringInterval`
 ):Serializable

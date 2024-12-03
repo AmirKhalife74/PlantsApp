@@ -27,4 +27,7 @@ object DBModule {
 
     @Provides
     fun providePlantDao(database: Database) = database.roomDao()
+
+    @Provides
+    fun provideWateringReminderDao(database: Database) = database.wateringDao()
 }
