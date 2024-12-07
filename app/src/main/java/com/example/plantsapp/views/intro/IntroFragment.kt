@@ -14,6 +14,7 @@ import com.example.plantsapp.R
 import com.example.plantsapp.utils.collapseView
 import com.example.plantsapp.utils.expandView
 import com.example.plantsapp.databinding.FragmentIntroBinding
+import com.example.plantsapp.utils.Env
 
 
 class IntroFragment : Fragment() {
@@ -59,6 +60,9 @@ class IntroFragment : Fragment() {
                     0 -> {
                             visibleViewWithAnimation(cardViewBack)
                             state = 1
+                            binding.apply {
+                                imgLottie.setAnimation(R.raw.sliding_pot)
+                            }
                         }
                     1 -> {
                             expandView(cardViewNext,tvCardNext)
@@ -69,7 +73,14 @@ class IntroFragment : Fragment() {
                         val handler = Handler(Looper.getMainLooper())
                         handler.postDelayed({
                             // Your code to execute after the duration
-                            findNavController().navigate(R.id.action_introFragment_to_loginFragment)
+                            if (Env.store.getBoolean("isLogin"))
+                            {
+                                findNavController().navigate(R.id.action_introFragment_to_mainFragment)
+                            }else
+                            {
+                                findNavController().navigate(R.id.action_introFragment_to_authFragment)
+                            }
+
                         }, 300)
 
                     }

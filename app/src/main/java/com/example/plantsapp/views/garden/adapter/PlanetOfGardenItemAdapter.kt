@@ -10,20 +10,21 @@ import com.example.plantsapp.data.Garden
 import com.example.plantsapp.data.Plant
 import com.example.plantsapp.R
 import com.example.plantsapp.databinding.AdapterItemGardenMainBinding
+import com.example.plantsapp.databinding.ItemPlantCardBinding
 
 class PlanetOfGardenItemAdapter(
     private var garden: Garden,
     private var navController: NavController,
     private var context: Context
 ) : RecyclerView.Adapter<PlanetOfGardenItemAdapter.GardenListViewHolder>() {
-    inner class GardenListViewHolder(private var binding: AdapterItemGardenMainBinding) :
+    inner class GardenListViewHolder(private var binding: ItemPlantCardBinding) :
         RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n", "ResourceAsColor")
         fun bind(plant: Plant, pos:Int) {
             binding.apply {
-                imgGardenBackground.setImageResource(R.drawable.alovera)
-                tvGardenName.text = plant.name
-                tvCountOfGardenPlants.text = plant.name
+                imgPlantImage.setImageResource(R.drawable.alovera)
+                tvPlantName.text = plant.name
+                tvPlantDescCard.text = plant.description
             }
         }
 
@@ -31,7 +32,7 @@ class PlanetOfGardenItemAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GardenListViewHolder {
         val viewHolder = GardenListViewHolder(
-            AdapterItemGardenMainBinding.inflate(
+            ItemPlantCardBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false

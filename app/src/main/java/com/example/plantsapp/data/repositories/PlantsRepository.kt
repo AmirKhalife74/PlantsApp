@@ -22,7 +22,7 @@ class PlantsRepository(private val dao: DAO, private val context: Context, priva
 
     suspend fun getAllPlants(): ResponseModel<List<Plant>>? {
         return withContext(Dispatchers.IO) {
-            if (internetCheck(context)) {
+            if (!internetCheck(context)) {
                 // Fetch from API when the internet is available
                 val apiResponse = api.getAllPlants().body()
                 apiResponse?.data?.let { plants ->

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.login.LoginFragment">
+    tools:context=".views.auth.LoginFragment">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -25,6 +25,15 @@
             android:layout_marginEnd="32dp"
             android:gravity="center"
             android:orientation="vertical">
+            <TextView
+                android:textStyle="bold"
+                android:textSize="32sp"
+                android:layout_marginBottom="8dp"
+                android:paddingEnd="8dp"
+                android:paddingStart="8dp"
+                android:text="ثبت نام"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -76,13 +85,42 @@
                     android:layout_height="wrap_content"
                     android:hint="تکرار رمز عبور" />
             </LinearLayout>
-
+            <TextView
+                android:id="@+id/tv_error"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
             <Button
+                android:id="@+id/btn_register"
                 android:backgroundTint="@color/main"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:text="ثبت نام" />
+            <LinearLayout
+                android:layout_margin="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textColor="@color/dark_main"
+                    android:layout_marginStart="8dp"
+                    android:text=" ورود"
+                    android:id="@+id/tv_login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <View
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@color/black"
+                    android:layout_width="1dp"
+                    android:layout_height="20dp"/>
+                <TextView
+                    android:textColor="@color/dark_main"
+                    android:layout_marginStart="8dp"
+                    android:text="رمز عبور خود را فراموش کرده اید ؟"
+                    android:id="@+id/tv_forget_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

@@ -121,89 +121,36 @@
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="84dp"
+        android:layout_height="88dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rc_gardens"
+            android:orientation="horizontal"
+            tools:listitem="@layout/adapter_item_garden_main"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>
-    <!-- Calendar Section -->
+
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
-        <!-- Month and Year Display -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="8dp">
-
-            <Button
-                android:id="@+id/btn_previous"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="بعد" />
-
-            <TextView
-                android:id="@+id/tv_month_year"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:text="Aban 1403"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/btn_next"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="قبل" />
-        </LinearLayout>
-
-        <!-- Days of the Week -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="Sat" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="Sun" />
-            <!-- Add other days -->
-        </LinearLayout>
-
-        <!-- Grid for Dates -->
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/calendar_grid"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:id="@+id/rc_plants_of_garden"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:horizontalSpacing="8dp"
-            android:numColumns="7"
-            android:verticalSpacing="8dp" />
+            tools:listitem="@layout/item_plant_card"
+            android:layout_height="match_parent" />
     </LinearLayout>
-
-    <!-- Additional RecyclerView Sections -->
-    <!-- Add existing RecyclerViews and ProgressBars here -->
 </androidx.constraintlayout.widget.ConstraintLayout>

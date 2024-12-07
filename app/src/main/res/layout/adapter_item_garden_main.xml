@@ -5,7 +5,7 @@
     android:layout_width="160dp"
     android:layout_margin="8dp"
     android:id="@+id/crd_garden"
-    android:layout_height="120dp">
+    android:layout_height="80dp">
 
     <androidx.cardview.widget.CardView
         app:cardCornerRadius="16dp"
@@ -38,10 +38,11 @@
 
             <!-- Linear layout for the content -->
             <LinearLayout
+                android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="8dp">
 
                 <TextView
                     android:layout_marginTop="8dp"
@@ -56,7 +57,7 @@
                     android:textStyle="bold"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
-                    android:textSize="16sp"
+                    android:textSize="12sp"
                     android:text="24 plants"
                     android:id="@+id/tv_count_of_garden_plants"
                     android:layout_width="wrap_content"

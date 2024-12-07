@@ -89,31 +89,27 @@ class HomePlantFragment : Fragment() {
         gardenViewModel.getAllGardensResponse.observe(viewLifecycleOwner) { data ->
             var gardens = data
             val addNewGardenItem = Garden(id = 0, "addNewItem", mutableListOf())
-            if (gardens == null)
-            {
+            if (gardens == null) {
                 gardens = mutableListOf()
             }
-            if (data?.contains(addNewGardenItem) == false)
-            {
+            if (!gardens.contains(addNewGardenItem)) {
                 gardens.add(0, addNewGardenItem)
             }
-            gardens?.let {
-                addToGarden(gardens, plant) { type, garden, gardenName ->
-                    gardenViewModel.viewModelScope.launch {
-                        when (type) {
-                            0 -> {
-                                gardenViewModel.createGarden(gardenName)
-                            }
+            addToGarden(gardens, plant) { type, garden, gardenName ->
+                gardenViewModel.viewModelScope.launch {
+                    when (type) {
+                        0 -> {
+                            gardenViewModel.createGarden(gardenName)
+                        }
 
-                            1 -> {
-                                gardenViewModel.addPlantToGarden(garden)
-                            }
-
+                        1 -> {
+                            gardenViewModel.addPlantToGarden(garden)
                         }
 
                     }
 
                 }
+
             }
 
         }

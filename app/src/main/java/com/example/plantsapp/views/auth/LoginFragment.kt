@@ -1,11 +1,10 @@
-package com.example.plantsapp.views.login
+package com.example.plantsapp.views.auth
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import com.example.data.model.auth.LoginRequest
@@ -18,7 +17,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class LoginFragment : Fragment() {
+class LoginFragment(private val listener: AuthNavigationListener) : Fragment() {
 
     lateinit var binding: FragmentLoginBinding
 
@@ -51,23 +50,27 @@ class LoginFragment : Fragment() {
                 userViewModel.viewModelScope.launch {
                     val username = edtUsername.text.toString()
                     val password = edtPassword.text.toString()
-                    val loginRequest = LoginRequest(username = username,password = password)
+                    val loginRequest = LoginRequest(username = username, password = password)
                     userViewModel.login(loginRequest)
                 }
+            }
+
+            tvRegister.setOnClickListener {
+                listener.navigateTo(1)
+
             }
         }
     }
 
     private fun observe() {
         userViewModel.viewModelScope.launch {
-            userViewModel.loginResponse.observe(viewLifecycleOwner){ value ->
+            userViewModel.loginResponse.observe(viewLifecycleOwner) { value ->
                 value?.let {
-                    if (value.accessToken.isNotEmpty() && value.refreshToken.isNotEmpty())
-                    {
-                        Env.store.setString("access_token",value.accessToken)
-                        Env.store.setString("refresh_token",value.refreshToken)
-                        Env.store.setBoolean("isLogin",true)
-                        findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
+                    if (value.accessToken.isNotEmpty() && value.refreshToken.isNotEmpty()) {
+                        Env.store.setString("access_token", value.accessToken)
+                        Env.store.setString("refresh_token", value.refreshToken)
+                        Env.store.setBoolean("isLogin", true)
+                        findNavController().navigate(R.id.action_authFragment_to_mainFragment)
                     }
                 }
             }
