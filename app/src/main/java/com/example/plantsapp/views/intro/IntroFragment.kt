@@ -14,21 +14,13 @@ import com.example.plantsapp.R
 import com.example.plantsapp.utils.collapseView
 import com.example.plantsapp.utils.expandView
 import com.example.plantsapp.databinding.FragmentIntroBinding
-import com.example.plantsapp.utils.Env
 
 
 class IntroFragment : Fragment() {
 
     private var state: Int = 0
-    private var originalStartConstraint: Int = 0
-    private var originalEndConstraint: Int = 0
-    private var originalBottomConstraint: Int = 0
 
     private lateinit var binding: FragmentIntroBinding
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -109,8 +101,8 @@ class IntroFragment : Fragment() {
 
     private fun visibleViewWithAnimation(view: View) {
         binding.apply {
-            view.setVisibility(View.VISIBLE);
-            view.setAlpha(0f); // Set the initial alpha to 0
+            view.visibility = View.VISIBLE
+            view.alpha = 0f // Set the initial alpha to 0
             view.animate()
                 .alpha(1f) // Animate the alpha to 1
                 .setDuration(100) // Duration of the animation (300ms)

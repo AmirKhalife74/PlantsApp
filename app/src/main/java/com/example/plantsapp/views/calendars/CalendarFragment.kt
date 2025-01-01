@@ -1,7 +1,8 @@
 package com.example.plantsapp.views.calendars
 
-import CalendarDayAdapter
-import JalaliDate
+import com.example.plantsapp.views.calendars.adapter.CalendarDayAdapter
+import com.example.plantsapp.utils.JalaliDate
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +10,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.plantsapp.data.model.reminder.WateringReminderModel
 import com.example.plantsapp.databinding.FragmentCalendarBinding
 import com.example.plantsapp.viewModels.ReminderViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,9 +26,6 @@ class CalendarFragment : Fragment() {
     private val jalaliDate = JalaliDate()
     private var currentYear = 1403
     private var currentMonth = 9
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,6 +47,7 @@ class CalendarFragment : Fragment() {
 //        wateringReminderRepository.insertReminder(reminder)
     }
 
+    @SuppressLint("DefaultLocale", "SetTextI18n")
     private fun updateCalendar() {
         binding.apply {
 

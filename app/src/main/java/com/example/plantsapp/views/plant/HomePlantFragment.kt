@@ -92,7 +92,7 @@ class HomePlantFragment : Fragment() {
 
                     when (type) {
                         0 -> {
-                            createGarden() { newGarden: Garden ->
+                            createGarden { newGarden: Garden ->
                                 garden.let {
                                     gardenViewModel.viewModelScope.launch {
                                         gardenViewModel.createGarden(newGarden)
@@ -125,8 +125,8 @@ class HomePlantFragment : Fragment() {
     private fun setPlant() {
         binding.apply {
             tvPlantName.text = plant.name
-            tvPlantDesc.text = plant.description.toString()
-            tvPlantPot.text = plant.name.toString()
+            tvPlantDesc.text = plant.description
+            tvPlantPot.text = plant.name
             tvPlantHieght.text = plant.description
         }
 
@@ -138,8 +138,6 @@ class HomePlantFragment : Fragment() {
         }
     }
 
-
-
     private fun collapseArrow()
     {
         binding.apply {
@@ -147,16 +145,6 @@ class HomePlantFragment : Fragment() {
                 rotateViewWithAnimation(imgCollapse)
             }
         }
-    }
-    private fun shrinkLayoutToCircle()
-    {
-        binding.apply {
-            lytCollapse.layoutParams
-        }
-    }
-    private fun growLayoutToSquare()
-    {
-
     }
 
 }

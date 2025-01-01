@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.plantsapp.utils
 
 import com.example.plantsapp.data.roomDb.model.NoInternetModel
@@ -31,8 +33,10 @@ fun resetNoInternet() = _noInternet.postValue(null)
 */
 
 fun setLocale(lang: String?, context: Context, activity: AppCompatActivity) {
-    val locale = Locale(lang)
-    Locale.setDefault(locale)
+    val locale = lang?.let { Locale(it) }
+    if (locale != null) {
+        Locale.setDefault(locale)
+    }
     val config: Configuration = Configuration()
     config.setLocale(locale)
     context.resources.updateConfiguration(config, context.resources.displayMetrics)
@@ -52,7 +56,7 @@ fun expandView(outerView: View, innerViewView: View) {
         View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
         View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
     )
-    val targetWidth = innerViewView.measuredWidth
+    innerViewView.measuredWidth
 
     // Animate the CardView's width
     val initialWidth = outerView.measuredWidth

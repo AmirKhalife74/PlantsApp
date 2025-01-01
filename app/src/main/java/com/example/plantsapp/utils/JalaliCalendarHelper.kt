@@ -1,3 +1,5 @@
+package com.example.plantsapp.utils
+
 import java.util.*
 
 class JalaliDate {
@@ -5,8 +7,8 @@ class JalaliDate {
     private val jalaliDaysInMonth = intArrayOf(31, 31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 29)
 
     fun gregorianToJalali(year: Int, month: Int, day: Int): Triple<Int, Int, Int> {
-        var gy = year - 1600
-        var gm = month - 1
+        val gy = year - 1600
+        val gm = month - 1
         var gd = day - 1
 
         val gDayNo = 365 * gy + ((gy + 3) / 4) - ((gy + 99) / 100) + ((gy + 399) / 400)
@@ -45,8 +47,8 @@ class JalaliDate {
     fun jalaliToGregorian(year: Int, month: Int, day: Int): Triple<Int, Int, Int> {
         val jalaliDaysInMonth = intArrayOf(31, 31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 29)
 
-        var jy = year - 979
-        var jm = month - 1
+        val jy = year - 979
+        val jm = month - 1
         var jd = day - 1
 
         val jDayNo = 365 * jy + jy / 33 * 8 + (jy % 33 + 3) / 4

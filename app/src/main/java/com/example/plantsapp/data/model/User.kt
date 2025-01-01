@@ -1,4 +1,4 @@
-package com.example.data.model.user
+package com.example.plantsapp.data.model
 
 import com.example.utils.UserRole
 import java.io.Serializable

@@ -13,7 +13,7 @@ class GardenViewModel @Inject constructor(private val gardenRepository: GardenRe
 
     private var _garden: MutableList<Plant> = mutableListOf()
     val garden: MutableList<Plant> get() = _garden
-    fun clearGarden() = _garden.clear()
+    //fun clearGarden() = _garden.clear()
 
     suspend fun createGarden(garden: Garden) {
         gardenRepository.createGarden(garden)
@@ -21,7 +21,7 @@ class GardenViewModel @Inject constructor(private val gardenRepository: GardenRe
 
     private var _getAllGardensResponse = MutableLiveData<MutableList<Garden>?>(null)
     val getAllGardensResponse: MutableLiveData<MutableList<Garden>?> get() = _getAllGardensResponse
-    fun _clearGetAllGardensResponse() = _garden.clear()
+    //fun clearGetAllGardensResponse() = _garden.clear()
 
     suspend fun getAllGardens() {
         gardenRepository.getAllGardens().let {
@@ -34,7 +34,7 @@ class GardenViewModel @Inject constructor(private val gardenRepository: GardenRe
 
     private var _getGardenResponse = MutableLiveData<Garden?>(null)
     val getGardenResponse: MutableLiveData<Garden?> get() = _getGardenResponse
-    fun _clearGetGardenResponse() = _getGardenResponse.postValue(null)
+    //fun clearGetGardenResponse() = _getGardenResponse.postValue(null)
 
     suspend fun getGardenById(id: Int) {
         gardenRepository.getGardenById(id).let {

@@ -1,7 +1,7 @@
 package com.example.plantsapp.views.garden.gardenItem
 
-import CalendarDayAdapter
-import JalaliDate
+import com.example.plantsapp.views.calendars.adapter.CalendarDayAdapter
+import com.example.plantsapp.utils.JalaliDate
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment

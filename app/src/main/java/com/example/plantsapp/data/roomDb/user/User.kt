@@ -1,4 +1,4 @@
-package com.example.data.model
+package com.example.plantsapp.data.roomDb.user
 
 import com.example.utils.UserRole
 

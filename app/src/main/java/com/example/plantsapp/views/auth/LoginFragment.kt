@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
-import com.example.data.model.auth.LoginRequest
+import com.example.plantsapp.data.model.auth.LoginRequest
 import com.example.plantsapp.R
 import com.example.plantsapp.databinding.FragmentLoginBinding
 import com.example.plantsapp.utils.Env

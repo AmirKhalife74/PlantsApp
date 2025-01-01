@@ -12,7 +12,6 @@ import com.example.plantsapp.data.Garden
 import com.example.plantsapp.utils.RecyclerTouchListener
 import com.example.plantsapp.viewModels.GardenViewModel
 import com.example.plantsapp.views.garden.adapter.GardenItemsMainAdapter
-import com.example.plantsapp.views.plant.adapter.PlanetOfGardenItemAdapter
 import com.example.plantsapp.databinding.FragmentGardenBinding
 import com.example.plantsapp.utils.createGarden
 import com.example.plantsapp.utils.showDialogOneButton
@@ -68,7 +67,7 @@ class GardenListFragment : Fragment() {
                     newGarden.let {
                         gardenViewModel.viewModelScope.launch {
                             gardenViewModel.createGarden(newGarden)
-                            showDialogOneButton("باغچه با موفقبت ساخته شد !") {}
+                            showDialogOneButton("باغچه با موفقبت ساخته شد !")
                             gardenViewModel.getAllGardens()
 
                         }

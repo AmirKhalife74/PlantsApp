@@ -2,11 +2,9 @@ package com.example.plantsapp.viewModels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.data.model.User
-import com.example.data.model.auth.LoginRequest
-import com.example.data.model.auth.RegisterRequest
-import com.example.plantsapp.data.Plant
-import com.example.plantsapp.data.model.ResponseModel
+import com.example.plantsapp.data.roomDb.user.User
+import com.example.plantsapp.data.model.auth.LoginRequest
+import com.example.plantsapp.data.model.auth.RegisterRequest
 import com.example.plantsapp.data.repositories.UserRepository
 import com.example.plantsapp.data.model.auth.LoginResponse
 import javax.inject.Inject
@@ -16,7 +14,7 @@ class UserViewModel @Inject constructor(private val userRepository: UserReposito
 
     private var _loginResponse = MutableLiveData<LoginResponse?>(null)
     val loginResponse : MutableLiveData<LoginResponse?> get() = _loginResponse
-    fun clearLoginResponse() = _loginResponse.postValue(null)
+    //fun clearLoginResponse() = _loginResponse.postValue(null)
 
     suspend fun login(loginRequest: LoginRequest)
     {

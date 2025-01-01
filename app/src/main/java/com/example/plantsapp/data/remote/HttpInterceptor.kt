@@ -9,7 +9,7 @@ import okio.IOException
 import java.net.HttpURLConnection
 
 
-class HttpInterceptor() : Interceptor {
+class HttpInterceptor : Interceptor {
 
 
     override fun intercept(chain: Interceptor.Chain): Response {
@@ -32,7 +32,7 @@ class HttpInterceptor() : Interceptor {
 
             if (response.code == HttpURLConnection.HTTP_OK) {
                 val responseBody = response.body
-                val content = responseBody?.string() ?: ""
+                val content = responseBody.string()
 
                 try {
                     Log.d("Requests", "${originalRequest.url}\n$content")
@@ -41,7 +41,7 @@ class HttpInterceptor() : Interceptor {
                 }
 
                 // Rebuild the response body and return the response
-                val mediaType = responseBody?.contentType()
+                val mediaType = responseBody.contentType()
                 val newResponseBody = content.toResponseBody(mediaType)
                 return response.newBuilder().body(newResponseBody).build()
 

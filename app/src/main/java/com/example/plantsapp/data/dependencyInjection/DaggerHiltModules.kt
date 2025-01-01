@@ -1,5 +1,6 @@
 package com.example.plantsapp.data.dependencyInjection
 
+import android.annotation.SuppressLint
 import com.example.plantsapp.data.remote.Api
 import com.example.plantsapp.data.remote.HttpInterceptor
 import com.example.plantsapp.utils.Env
@@ -27,13 +28,16 @@ object NetworkModule {
     @Provides
     fun provideApi(): Api {
 
-        val trustAllCerts = arrayOf<TrustManager>(object : X509TrustManager {
+        val trustAllCerts = arrayOf<TrustManager>(@SuppressLint("CustomX509TrustManager")
+        object : X509TrustManager {
+            @SuppressLint("TrustAllX509TrustManager")
             override fun checkClientTrusted(
                 chain: Array<java.security.cert.X509Certificate>,
                 authType: String
             ) {
             }
 
+            @SuppressLint("TrustAllX509TrustManager")
             override fun checkServerTrusted(
                 chain: Array<java.security.cert.X509Certificate>,
                 authType: String

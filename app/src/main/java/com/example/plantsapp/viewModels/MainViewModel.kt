@@ -3,7 +3,6 @@ package com.example.plantsapp.viewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.plantsapp.data.Plant
-import com.example.plantsapp.data.model.ResponseModel
 import com.example.plantsapp.data.roomDb.model.Cart
 import com.example.plantsapp.data.repositories.PlantsRepository
 import javax.inject.Inject
@@ -15,11 +14,11 @@ class MainViewModel @Inject constructor(private val plantsRepository: PlantsRepo
 
     private var _plantList = MutableLiveData<List<Plant>?>(null)
     val plantList : MutableLiveData<List<Plant>?> get() = _plantList
-    fun clearPlantsList() = _plantList.postValue(null)
+    //fun clearPlantsList() = _plantList.postValue(null)
 
     private var _cart = MutableLiveData<Cart?>(null)
     val cart : MutableLiveData<Cart?> get() = _cart
-    fun clearCart() = _cart.postValue(null)
+    //fun clearCart() = _cart.postValue(null)
 
     suspend fun getPlants(){
         plantsRepository.getAllPlants()?.let {

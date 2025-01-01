@@ -1,5 +1,6 @@
 package com.example.plantsapp.utils
 
+import android.annotation.SuppressLint
 import android.app.Application
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -10,6 +11,7 @@ import dagger.hilt.android.HiltAndroidApp
 @HiltAndroidApp
 class App: Application() {
     companion object {
+        @SuppressLint("StaticFieldLeak")
         lateinit var context: Context
         const val CHANNEL_ID = "alarm_notification_channel"
     }

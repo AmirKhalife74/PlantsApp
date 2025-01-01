@@ -1,5 +1,6 @@
 package com.example.plantsapp.views.plant
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -20,20 +21,32 @@ class ShopPlantFragment : Fragment() {
     @Inject
     lateinit var viewModel: MainViewModel
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentShopPlantBinding.inflate(inflater, container, false)
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        init()
+        listen()
+        observe()
+    }
 
+    private fun init() {
+        addToCartButtons()
+    }
+
+    private fun observe() {}
+
+    private fun listen() {}
+
+
+
+    @SuppressLint("SetTextI18n")
     private fun addToCartButtons(){
         binding.apply {
             val cart = viewModel.cart.value
@@ -61,10 +74,11 @@ class ShopPlantFragment : Fragment() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun totalCost()
     {
         binding.apply {
-            tvPlantPrice.text = "$" + (plant.price?.times(tvPlantValue.text.toString().toInt())).toString()
+            tvPlantPrice.text = "$" + (plant.price.times(tvPlantValue.text.toString().toInt())).toString()
         }
     }
 

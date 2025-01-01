@@ -3,8 +3,8 @@ package com.example.plantsapp.utils
 import android.content.Context
 
 
-class PreDefs(app: Context) {
-    private val pref = app.getSharedPreferences("BusnetDriverV2", Context.MODE_PRIVATE)
+class PreDef(app: Context) {
+    private val pref = app.getSharedPreferences("GolBoon", Context.MODE_PRIVATE)
 
     fun setString(key: String, value: String) {
         pref.edit().putString(key, value).apply()

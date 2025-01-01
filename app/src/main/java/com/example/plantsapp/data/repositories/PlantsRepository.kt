@@ -1,7 +1,6 @@
 package com.example.plantsapp.data.repositories
 
 import android.content.Context
-import android.widget.Toast
 import com.example.plantsapp.data.roomDb.DAO
 import com.example.plantsapp.data.Plant
 import com.example.plantsapp.data.model.ResponseModel
@@ -9,7 +8,6 @@ import com.example.plantsapp.data.remote.Api
 import com.example.plantsapp.utils.internetCheck
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import retrofit2.Response
 
 class PlantsRepository(private val dao: DAO, private val context: Context, private val api: Api) {
     suspend fun insertPlant(plant: Plant) {

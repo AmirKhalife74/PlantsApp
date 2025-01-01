@@ -2,7 +2,6 @@ package com.example.plantsapp.data.repositories
 
 import android.content.Context
 import com.example.plantsapp.data.Garden
-import com.example.plantsapp.data.Plant
 import com.example.plantsapp.data.remote.Api
 import com.example.plantsapp.data.roomDb.DAO
 import dagger.hilt.android.qualifiers.ApplicationContext

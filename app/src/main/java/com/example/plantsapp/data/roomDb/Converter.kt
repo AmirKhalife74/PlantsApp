@@ -48,7 +48,7 @@ class Converter {
     fun fromStringToList(json: String?): List<String>? {
         return json?.let {
             val type = object : TypeToken<List<String>>() {}.type
-            Gson().fromJson<List<String>>(it, type)
+            Gson().fromJson(it, type)
         }
     }
 }

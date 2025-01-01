@@ -33,7 +33,7 @@ fun Fragment.addToGarden(
             dialog.window!!.setLayout(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
-            );
+            )
             dialog.window!!.setGravity(Gravity.BOTTOM)
 
             dialog.setCanceledOnTouchOutside(true)
@@ -69,12 +69,10 @@ fun Fragment.addToGarden(
                             override fun onItemClick(view: View?, position: Int) {
                                 selectedGarden = gardens?.get(position)
                                 if (gardens != null) {
-                                    if (gardens.get(position) != null) {
 
-                                        selectedGarden?.plants?.add(plant)
-                                        dialog.dismiss()
-                                        logger(selectedGarden.toString())
-                                    }
+                                    selectedGarden?.plants?.add(plant)
+                                    dialog.dismiss()
+                                    logger(selectedGarden.toString())
                                 }
                             }
 
@@ -106,7 +104,7 @@ fun Fragment.createGarden(
             dialog.window!!.setLayout(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
-            );
+            )
             dialog.window!!.setGravity(Gravity.BOTTOM)
 
             dialog.setCanceledOnTouchOutside(true)
@@ -150,8 +148,8 @@ fun Fragment.createGarden(
     }
 }
 
-fun Fragment.showDialogOneButton(message:String,
-    operator: (garden: Garden) -> Unit
+fun Fragment.showDialogOneButton(
+    message: String
 ) {
     view.let {
         view?.let {
@@ -163,7 +161,7 @@ fun Fragment.showDialogOneButton(message:String,
             dialog.window!!.setLayout(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
-            );
+            )
             dialog.window!!.setGravity(Gravity.BOTTOM)
 
             dialog.setCanceledOnTouchOutside(true)
