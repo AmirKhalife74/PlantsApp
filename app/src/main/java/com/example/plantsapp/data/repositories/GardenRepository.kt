@@ -23,9 +23,8 @@ class GardenRepository @Inject constructor(
         dao.deleteGarden(garden)
     }
 
-    suspend fun createGarden(plantList: MutableList<Plant>, gardenName: String) {
+    suspend fun createGarden(garden: Garden) {
         return withContext(Dispatchers.IO) {
-            val garden = Garden(0, gardenName, plantList)
             dao.insertGarden(garden)
         }
     }

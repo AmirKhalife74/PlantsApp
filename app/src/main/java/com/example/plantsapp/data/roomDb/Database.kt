@@ -6,7 +6,7 @@ import com.example.plantsapp.data.Garden
 import com.example.plantsapp.data.Plant
 import com.example.plantsapp.data.model.reminder.WateringReminderModel
 
-@androidx.room.Database(entities = [Plant::class,Garden::class,WateringReminderModel::class], version = 1,exportSchema = true)
+@androidx.room.Database(entities = [Plant::class,Garden::class,WateringReminderModel::class], version = 2)
 @TypeConverters(Converter::class)
 abstract class Database : RoomDatabase() {
     abstract fun roomDao(): DAO

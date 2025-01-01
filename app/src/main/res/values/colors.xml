@@ -4,9 +4,16 @@
     <color name="white">#FFFFFFFF</color>
     <color name="dark_white">#F4F4F4</color>
     <color name="main">#76984B</color>
+    <color name="light_main">#BDDB93</color>
     <color name="dark_main">#4D6332</color>
     <color name="light_gray">#E6E6E6</color>
     <color name="dark_gray">#545454</color>
     <color name="gray">#BABABA</color>
-    <color name="reminder_day">#FFEB3B</color> <!-- Highlight color for reminder days -->
+    <color name="reminder_day">#FFEB3B</color>
+    <color name="garden_green">#4CAF50</color>
+    <color name="garden_blue">#2196F3</color>
+    <color name="garden_yellow">#FFEB3B</color>
+    <color name="garden_red">#F44336</color>
+    <color name="garden_purple">#9C27B0</color>
+    <color name="button_red">#BD0000</color>
 </resources>

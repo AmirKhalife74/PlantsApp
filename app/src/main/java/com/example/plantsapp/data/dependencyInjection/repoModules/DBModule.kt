@@ -3,7 +3,7 @@ package com.example.plantsapp.data.dependencyInjection.repoModules
 import android.content.Context
 import androidx.room.Room
 import com.example.plantsapp.data.roomDb.Database
-import com.example.plantsapp.data.roomDb.MIGRATION_2_4
+import com.example.plantsapp.data.roomDb.MIGRATION_1_2
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,8 +21,8 @@ object DBModule {
         return Room.databaseBuilder(
             context.applicationContext,
             Database::class.java,
-            "plant_app"
-        )
+            "plant_app_db_v3"
+        ).addMigrations(MIGRATION_1_2)
             .build()
 
     }

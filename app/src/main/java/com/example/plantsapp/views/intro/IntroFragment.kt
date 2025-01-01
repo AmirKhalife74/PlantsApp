@@ -72,17 +72,17 @@ class IntroFragment : Fragment() {
 
                         val handler = Handler(Looper.getMainLooper())
                         handler.postDelayed({
-                            // Your code to execute after the duration
-                            if (Env.store.getBoolean("isLogin"))
-                            {
-                                findNavController().navigate(R.id.action_introFragment_to_mainFragment)
-                            }else
-                            {
-                                findNavController().navigate(R.id.action_introFragment_to_authFragment)
-                            }
+                            // Theses are when you want to Create a Login with user name and Password
+//                            if (Env.store.getBoolean("isLogin"))
+//                            {
+//                                findNavController().navigate(R.id.action_introFragment_to_mainFragment)
+//                            }else
+//                            {
+//                                findNavController().navigate(R.id.action_introFragment_to_authFragment)
+//                            }
 
                         }, 300)
-
+                        findNavController().navigate(R.id.action_introFragment_to_mainFragment)
                     }
                 }
             }

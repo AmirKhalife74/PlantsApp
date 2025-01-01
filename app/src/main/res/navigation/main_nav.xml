@@ -37,6 +37,9 @@
         <action
             android:id="@+id/action_gardenFragment_to_gardenItemFragment"
             app:destination="@id/gardenItemFragment" />
+        <action
+            android:id="@+id/action_gardenFragment_to_homeFragment2"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/shopFragment"

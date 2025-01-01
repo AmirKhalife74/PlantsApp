@@ -81,7 +81,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_plant_name" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout3"
+        android:id="@+id/lyt_collapse"
         android:layout_width="0dp"
         android:layout_height="200dp"
         android:background="@drawable/card_back_ground"

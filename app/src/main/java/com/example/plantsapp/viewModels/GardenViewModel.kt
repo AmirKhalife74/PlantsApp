@@ -15,9 +15,8 @@ class GardenViewModel @Inject constructor(private val gardenRepository: GardenRe
     val garden: MutableList<Plant> get() = _garden
     fun clearGarden() = _garden.clear()
 
-    suspend fun createGarden(gardenName: String) {
-
-        gardenRepository.createGarden(_garden, gardenName)
+    suspend fun createGarden(garden: Garden) {
+        gardenRepository.createGarden(garden)
     }
 
     private var _getAllGardensResponse = MutableLiveData<MutableList<Garden>?>(null)

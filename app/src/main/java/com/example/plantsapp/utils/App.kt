@@ -21,7 +21,6 @@ class App: Application() {
         val sentyEnvironment = "production"
         //val sentyEnvironment = "development"
 
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
                 "foreground-channel",

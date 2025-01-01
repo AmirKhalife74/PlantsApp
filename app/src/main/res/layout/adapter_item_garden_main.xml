@@ -2,69 +2,101 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="160dp"
-    android:layout_margin="8dp"
     android:id="@+id/crd_garden"
-    android:layout_height="80dp">
+    android:layout_width="match_parent"
+    android:layout_height="118dp"
+    android:layout_margin="8dp">
 
     <androidx.cardview.widget.CardView
-        app:cardCornerRadius="16dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="2dp"
+        app:cardCornerRadius="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <!-- FrameLayout to layer the gradient and image -->
-        <FrameLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <!-- Gradient background view -->
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/gradiant_garden_items" />
-
-            <!-- Image view for dynamic image -->
-            <ImageView
-                android:src="@drawable/garden3"
-                android:id="@+id/img_garden_background"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:alpha="0.7" />
-
-            <!-- Linear layout for the content -->
             <LinearLayout
-                android:gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/lyt_garden_color"
+                android:layout_width="28dp"
+                android:layout_height="0dp"
+                android:background="@color/garden_green"
                 android:orientation="vertical"
-                android:padding="8dp">
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView2"
+                android:layout_width="96dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="8dp"
+                app:cardCornerRadius="18dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/img_garden"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+
+                android:id="@+id/linearLayout3"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toEndOf="@+id/cardView2"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:layout_marginTop="8dp"
-                    android:layout_marginStart="4dp"
+
                     android:id="@+id/tv_garden_name"
-                    android:textSize="18sp"
-                    android:text="Garden Name"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="Garden Name"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/cardView2"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:textStyle="bold"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:textSize="12sp"
-                    android:text="24 plants"
-                    android:id="@+id/tv_count_of_garden_plants"
+                    android:id="@+id/tv_garden_count"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="count of plants" />
             </LinearLayout>
 
-        </FrameLayout>
+
+            <TextView
+                android:layout_marginTop="4dp"
+                android:id="@+id/tv_garden_info"
+                android:layout_width="0dp"
+                android:layout_marginStart="8dp"
+                android:layout_height="0dp"
+                android:gravity="start"
+                android:text="Desc about Garden"
+                app:layout_constraintBottom_toBottomOf="@+id/cardView2"
+                app:layout_constraintEnd_toStartOf="@+id/lyt_garden_color"
+                app:layout_constraintStart_toEndOf="@+id/cardView2"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     </androidx.cardview.widget.CardView>
 

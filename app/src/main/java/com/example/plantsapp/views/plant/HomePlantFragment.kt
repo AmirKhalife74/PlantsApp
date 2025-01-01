@@ -14,6 +14,8 @@ import com.example.plantsapp.utils.addToGarden
 import com.example.plantsapp.viewModels.GardenViewModel
 import com.example.plantsapp.viewModels.MainViewModel
 import com.example.plantsapp.databinding.FragmentPlantBinding
+import com.example.plantsapp.utils.createGarden
+import com.example.plantsapp.utils.rotateViewWithAnimation
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -29,13 +31,9 @@ class HomePlantFragment : Fragment() {
 
     @Inject
     lateinit var viewModel: MainViewModel
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentPlantBinding.inflate(inflater, container, false)
 
@@ -58,12 +56,13 @@ class HomePlantFragment : Fragment() {
         plant = args.plant
         setPlant()
         setRc()
+
     }
 
     private fun listen() {
         goBackButton()
         addToGardenButton()
-
+        collapseArrow()
     }
 
     private fun addToGardenButton() {
@@ -87,31 +86,39 @@ class HomePlantFragment : Fragment() {
 
     private fun getGardenListObserve() {
         gardenViewModel.getAllGardensResponse.observe(viewLifecycleOwner) { data ->
-            var gardens = data
-            val addNewGardenItem = Garden(id = 0, "addNewItem", mutableListOf())
-            if (gardens == null) {
-                gardens = mutableListOf()
-            }
-            if (!gardens.contains(addNewGardenItem)) {
-                gardens.add(0, addNewGardenItem)
-            }
-            addToGarden(gardens, plant) { type, garden, gardenName ->
-                gardenViewModel.viewModelScope.launch {
+            data?.let {
+
+                addToGarden(data, plant) { type, garden ->
+
                     when (type) {
                         0 -> {
-                            gardenViewModel.createGarden(gardenName)
+                            createGarden() { newGarden: Garden ->
+                                garden.let {
+                                    gardenViewModel.viewModelScope.launch {
+                                        gardenViewModel.createGarden(newGarden)
+                                    }
+
+                                }
+                            }
                         }
 
                         1 -> {
-                            gardenViewModel.addPlantToGarden(garden)
+                            garden?.let {
+                                gardenViewModel.viewModelScope.launch {
+                                    gardenViewModel.addPlantToGarden(garden)
+                                }
+                            }
+
+
                         }
 
                     }
 
                 }
 
-            }
+            } ?: run {
 
+            }
         }
     }
 
@@ -129,6 +136,27 @@ class HomePlantFragment : Fragment() {
         binding.apply {
 
         }
+    }
+
+
+
+    private fun collapseArrow()
+    {
+        binding.apply {
+            imgCollapse.setOnClickListener {
+                rotateViewWithAnimation(imgCollapse)
+            }
+        }
+    }
+    private fun shrinkLayoutToCircle()
+    {
+        binding.apply {
+            lytCollapse.layoutParams
+        }
+    }
+    private fun growLayoutToSquare()
+    {
+
     }
 
 }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".views.plant.HomePlantFragment">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
@@ -14,33 +14,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
-            app:cardCornerRadius="32dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:layout_width="46dp"
-                android:layout_height="46dp"
-                android:src="@drawable/ic_launcher_foreground" />
-        </androidx.cardview.widget.CardView>
 
         <ImageView
             android:id="@+id/img_back"
             android:layout_width="26dp"
             android:layout_height="26dp"
-            android:layout_marginStart="24dp"
-            android:src="@drawable/icons8_backward_100"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/forward_arrow"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Test"
@@ -48,7 +34,24 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:cardCornerRadius="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:src="@drawable/ic_launcher_foreground" />
+        </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <ImageView
         android:id="@+id/imageView3"
@@ -60,30 +63,31 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
     <TextView
-        android:textStyle="bold"
-        android:textSize="21sp"
         android:id="@+id/tv_plant_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="Plant Name"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginEnd="8dp"
+        android:text="نام گل"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <TextView
-        android:textAlignment="textStart"
-        android:layout_marginTop="16dp"
         android:id="@+id/tv_plant_desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="plant Desc"
-        app:layout_constraintStart_toStartOf="@+id/tv_plant_name"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="اطلاعات گل"
+        android:textAlignment="textStart"
+        app:layout_constraintEnd_toEndOf="@+id/tv_plant_name"
         app:layout_constraintTop_toBottomOf="@+id/tv_plant_name" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout3"
+        android:id="@+id/lyt_collapse"
         android:layout_width="0dp"
-        android:layout_height="200dp"
+        android:layout_height="190dp"
         android:background="@drawable/card_back_ground"
         app:cardCornerRadius="28dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -92,10 +96,23 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
+            android:id="@+id/img_collapse"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="4dp"
+            android:foregroundTint="@color/white"
+            android:rotation="90"
+            android:src="@drawable/forward_arrow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white" />
+
+        <ImageView
             android:id="@+id/imageView4"
             android:layout_width="28dp"
             android:layout_height="28dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="56dp"
             android:src="@drawable/temp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -128,7 +145,7 @@
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:layout_marginStart="52dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="56dp"
             android:src="@drawable/temp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -160,7 +177,7 @@
             android:id="@+id/imageView6"
             android:layout_width="28dp"
             android:layout_height="28dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="56dp"
             android:layout_marginEnd="52dp"
             android:src="@drawable/temp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -192,13 +209,13 @@
 
         <Button
             android:id="@+id/btn_add_to_garden"
-            android:textSize="18sp"
-            android:layout_marginBottom="16dp"
-            android:textColor="@color/black"
-            android:text="Add to the Garden"
-            android:backgroundTint="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/white"
+            android:text="اضافه کردن به باغچه"
+            android:textColor="@color/black"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
