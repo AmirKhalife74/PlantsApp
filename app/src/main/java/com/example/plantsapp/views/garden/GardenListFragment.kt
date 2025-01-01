@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.fragment.findNavController
 import com.example.plantsapp.R
 import com.example.plantsapp.data.Garden
 import com.example.plantsapp.utils.RecyclerTouchListener
@@ -93,7 +92,6 @@ class GardenListFragment : Fragment() {
                             val adapter = GardenItemsMainAdapter(
                                 context = requireContext(),
                                 gardens = it,
-                                navController = findNavController()
                             )
                             rcGardens.adapter = adapter
                             rcGardens.addOnItemTouchListener(

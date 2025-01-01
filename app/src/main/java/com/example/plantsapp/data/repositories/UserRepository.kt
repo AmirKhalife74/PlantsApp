@@ -2,8 +2,8 @@ package com.example.plantsapp.data.repositories
 
 import android.content.Context
 import com.example.plantsapp.data.roomDb.user.User
-import com.example.plantsapp.data.model.auth.LoginRequest
-import com.example.plantsapp.data.model.auth.RegisterRequest
+import com.example.data.model.auth.LoginRequest
+import com.example.data.model.auth.RegisterRequest
 import com.example.plantsapp.data.model.ResponseModel
 import com.example.plantsapp.data.remote.Api
 import com.example.plantsapp.data.roomDb.DAO

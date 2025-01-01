@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.viewModelScope
-import com.example.plantsapp.data.model.auth.RegisterRequest
+import com.example.data.model.auth.RegisterRequest
 import com.example.plantsapp.databinding.FragmentRegisterBinding
 import com.example.plantsapp.viewModels.UserViewModel
 import com.example.utils.UserRole

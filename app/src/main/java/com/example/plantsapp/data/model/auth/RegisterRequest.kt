@@ -1,4 +1,4 @@
-package com.example.plantsapp.data.model.auth
+package com.example.data.model.auth
 
 import com.example.utils.UserRole
 import java.io.Serializable
